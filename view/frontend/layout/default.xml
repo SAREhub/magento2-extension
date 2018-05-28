@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="require.js">
+            <container name="sare.params" as="sare.params" label="SARE Params Container" htmlTag="div" htmlClass="some-container" />
+
+            <action method="setTemplate" ifconfig="sarehub/general/enabled">
+                <argument name="template" xsi:type="string">SARE_SAREhub::require.js.phtml</argument>
+            </action>
+            <block  class="SARE\SAREhub\Block\BasicCode" name="sare.sarehub.basic_code" as="sare.sarehub.basic_code" template="SARE_SAREhub::snippets/basic_code.phtml" />
+        </referenceBlock>
+    </body>
+</page>

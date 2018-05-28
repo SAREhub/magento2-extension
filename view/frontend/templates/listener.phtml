@@ -1,0 +1,35 @@
+
+
+<script>
+    require([
+        'jquery',
+        'SARE_SAREhub/js/listener'
+    ], function($) {
+        <?php if($this->helper('SARE\SAREhub\Helper\Config')->isTrackingAllowed('_cartadd')){?>
+        $(document).on('productAdded', function (event, object) {
+            console.log('Product added!');
+            sareX_core.execute(10, productDataAdd);
+        });
+        <?php } ?>
+
+        <?php if($this->helper('SARE\SAREhub\Helper\Config')->isTrackingAllowed('_cartdel')){?>
+        $(document).on('productRemoved', function (event, object) {
+            sareX_core.execute(10, productDataRemove);
+        });
+        <?php }?>
+
+        <?php if($this->helper('SARE\SAREhub\Helper\Config')->isTrackingAllowed('_cartconfirm')){?>
+        $(document).on('billingSaved', function (event, object) {
+            sareX_core.execute(10, sareX_params.additional.params);
+        });
+        <?php } ?>
+
+        /* $(document).on('productModified', function (event, object) {
+           var modifiedProductData = productDataAdd;
+           modifiedProductData['_cartquantity'] = productDataAdd['_cartadd'];
+           modifiedProductData['_cartquantity'].quantity = object.qty;
+           delete modifiedProductData['_cartadd'];
+           sareX_core.execute(10, modifiedProductData);
+        }); */
+    });
+</script>

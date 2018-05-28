@@ -1,0 +1,4 @@
+<div class="field choice">
+    <input type="checkbox" name="agree_to_sarehub" id="agree_to_sarehub " value="1" <?php if ($block->isOptedIn()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+    <label class="label" for="agree_to_sarehub"><span><?php /* @escapeNotVerified */ echo __('Agree to SAREhub') ?></span> (<a target="_blank" href="https://sarehub.com/SAREhub_REGULAMIN.pdf"><?php echo __('SAREhub terms and conditions');?></a>)</label>
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sarehub>
+            <general>
+                <enabled>0</enabled>
+                <basic_code><![CDATA[(function (p){window['sareX_params']=p;var s=document.createElement('script');
+s.src='//x.sare25.com/libs/sarex4.min.js';
+s.async=true;var t=document.getElementsByTagName('script')[0];
+t.parentNode.insertBefore(s,t);
+})({
+   domain : '%DOMAIN%',
+   ping : {'period0' : 10, 'period1' : 60},
+   execute : true,
+   sareX_ip : false,
+   inisTrack : {t:'p', c:'<kampania>',s:'<strona>'}
+});]]></basic_code>
+            </general>
+        </sarehub>
+    </default>
+</config>
