@@ -7,7 +7,10 @@
             <action method="setTemplate" ifconfig="sarehub/general/enabled">
                 <argument name="template" xsi:type="string">SARE_SAREhub::require.js.phtml</argument>
             </action>
-            <block  class="SARE\SAREhub\Block\BasicCode" name="sare.sarehub.basic_code" as="sare.sarehub.basic_code" template="SARE_SAREhub::snippets/basic_code.phtml" />
+            <block class="SARE\SAREhub\Block\BasicCode" name="sare.sarehub.basic_code" as="sare.sarehub.basic_code" template="SARE_SAREhub::snippets/basic_code.phtml" />
         </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="sare.cart.listener" template="SARE_SAREhub::listener.phtml" />
+        </referenceContainer>
     </body>
 </page>

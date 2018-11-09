@@ -10,5 +10,5 @@ require([
     'sarewebLib',
     'jquery','domReady!'
 ], function($) {
-console.log("aaaaa");
+
 });
