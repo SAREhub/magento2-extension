@@ -1,5 +1,3 @@
-
-
 <script>
     require([
         'jquery',
@@ -7,14 +5,49 @@
     ], function($) {
         <?php if($this->helper('SARE\SAREhub\Helper\Config')->isTrackingAllowed('_cartadd')){?>
         $(document).on('productAdded', function (event, object) {
-            console.log('Product added!');
-            sareX_core.execute(10, productDataAdd);
+            var data = {
+                "_cartadd" : {
+                    "id": object.items.product_id,
+                    "name": object.items.product_name,
+                    "price": object.items.product_price_value,
+                    "url": object.items.product_url,
+                    "quantity": object["qty"]
+                }
+            };
+
+            if(typeof(productDataAdd) !== "undefined"){
+                productDataAdd._cartadd.quantity = object["qty"];
+                data = productDataAdd;
+            }
+
+            if(object["qty"]>0) {
+                sareX_core.execute(10, data);
+            }
         });
         <?php } ?>
 
         <?php if($this->helper('SARE\SAREhub\Helper\Config')->isTrackingAllowed('_cartdel')){?>
         $(document).on('productRemoved', function (event, object) {
-            sareX_core.execute(10, productDataRemove);
+
+            for (var i = 0; i < object.items.length; i++) {
+                var data = {
+                    "_cartdel": {
+                        "id": object.items[i].product_id,
+                        "name": object.items[i].product_name,
+                        "price": object.items[i].product_price_value,
+                        "url": object.items[i].product_url,
+                        "quantity": object.items[i].qty
+                    }
+                };
+                if (typeof(productDataRemove) != "undefined") {
+                    productDataRemove._cartdel.quantity = object.items[i].qty;
+                    data = productDataRemove;
+                }
+
+                if (object.items[i].qty > 0) {
+                    sareX_core.execute(10, data);
+                }
+            }
         });
         <?php }?>
 
@@ -24,12 +57,29 @@
         });
         <?php } ?>
 
-        /* $(document).on('productModified', function (event, object) {
-           var modifiedProductData = productDataAdd;
-           modifiedProductData['_cartquantity'] = productDataAdd['_cartadd'];
-           modifiedProductData['_cartquantity'].quantity = object.qty;
-           delete modifiedProductData['_cartadd'];
-           sareX_core.execute(10, modifiedProductData);
-        }); */
+        $(document).on('productModified', function (event, object) {
+            for (var i = 0; i < object.items.length; i++) {
+
+                var data = {
+                    "_cartquantity": {
+                        "id": object.items[i].product_id,
+                        "name": object.items[i].product_name,
+                        "price": object.items[i].product_price_value,
+                        "url": object.items[i].product_url,
+                        "quantity": object.items[i].qty
+                    }
+                };
+
+                if (typeof(productDataAdd) != "undefined") {
+                    var modifiedProductData = Object.assign({}, productDataAdd);
+                    modifiedProductData['_cartquantity'] = productDataAdd['_cartadd'];
+                    modifiedProductData['_cartquantity'].quantity = object.qty;
+                    delete modifiedProductData['_cartadd'];
+                    data = modifiedProductData;
+                }
+                
+                sareX_core.execute(10, data);
+            }
+        });
     });
 </script>

@@ -4,4 +4,13 @@
     <event name="customer_save_before">
         <observer name="sarehub_customer_save_before" instance="SARE\SAREhub\Observer\BeforeCustomerSave" />
     </event>
+    <!--<event name="checkout_cart_update_items_before">
+        <observer name="sarehub_cart_update_items_after" instance="SARE\SAREhub\Observer\CartUpdateItemsAfter" />
+    </event>-->
+    <!--<event name="checkout_cart_product_add_after">
+        <observer name="sarehub_checkout_cart_product_add_after" instance="SARE\SAREhub\Observer\ProductAddAfter" />
+    </event>
+    <event name="sales_quote_remove_item">
+        <observer name="sarehub_checkout_quote_remove_item" instance="SARE\SAREhub\Observer\QuoteRemoveItem" />
+    </event>-->
 </config>

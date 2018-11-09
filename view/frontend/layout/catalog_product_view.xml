@@ -10,9 +10,6 @@
                 </arguments>
             </block>
         </referenceContainer>
-        <referenceContainer name="before.body.end">
-            <block class="Magento\Framework\View\Element\Template" name="sare.cart.listener" template="SARE_SAREhub::listener.phtml" />
-        </referenceContainer>
     </body>
 </page>
 

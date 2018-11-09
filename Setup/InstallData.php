@@ -16,14 +16,11 @@ class InstallData implements InstallDataInterface
 
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
         $setup->startSetup();
 
         $attributeCode = "agree_to_sarehub";
-
         $customerSetup->removeAttribute(\Magento\Customer\Model\Customer::ENTITY, $attributeCode);
-
         $customerSetup->addAttribute('customer',
             $attributeCode, [
                 'label' => 'Agree to SAREhub',

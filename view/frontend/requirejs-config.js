@@ -3,7 +3,7 @@ var config = {
         "sarewebLib": [],
     },
     "paths": {
-        "sarewebLib": "https://x.sare25.com/libs/sarex4.min"
+        "sarewebLib": "SARE_SAREhub/sarewebLib"
     }
 };
 
@@ -11,4 +11,8 @@ require.config(config);
 
 require([
     'sarewebLib'
-], function($) {});
+], function($) {
+
+
+});
+
