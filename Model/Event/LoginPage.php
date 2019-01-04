@@ -2,9 +2,11 @@
 
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as EventType;;
+
 class LoginPage extends Event implements EventInterface
 {
-    public $_id = '_loginpage';
+    public $_id = EventType::LOGIN_PAGE;
 
     public function getCode(){
         $this->setData($this->_id, $this->populateLoginPageData());

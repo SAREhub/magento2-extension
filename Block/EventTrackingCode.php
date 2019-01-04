@@ -2,7 +2,15 @@
 
 namespace SARE\SAREhub\Block;
 
-use SARE\SAREhub\Helper;
+use SARE\SAREhub\Model\Event;
+
+use SARE\SAREhub\Model\Event\CategoryPage;
+use SARE\SAREhub\Model\Event\ProductPage;
+use SARE\SAREhub\Model\Event\LoginPage;
+use SARE\SAREhub\Model\Event\CheckoutPage;
+use SARE\SAREhub\Model\Event\SuccessPage;
+use SARE\SAREhub\Model\Event\DeliverySelection;
+use SARE\SAREhub\Model\Event\CartConfirm;
 
 class EventTrackingCode extends \Magento\Framework\View\Element\Template
 {
@@ -13,13 +21,13 @@ class EventTrackingCode extends \Magento\Framework\View\Element\Template
     protected $_categoryHelper;
 
     protected $_classMapping = [
-        '_category' => 'CategoryPage',
-        '_product' => 'ProductPage',
-        '_loginpage' => 'LoginPage',
-        '_cartregistration' => 'CheckoutPage',
-        '_cartpurchased' => 'SuccessPage',
-        '_cartpayment' => 'DeliverySelection',
-        '_cartconfirm' => 'CartConfirm'
+        Event::CATEGORY => CategoryPage::class,
+        Event::PRODUCT => ProductPage::class,
+        Event::LOGIN_PAGE => LoginPage::class,
+        Event::CART_REGISTRATION => CheckoutPage::class,
+        Event::CART_PURCHASED => SuccessPage::class,
+        Event::CART_PAYMENT => DeliverySelection::class,
+        EVENT::CART_CONFIRM => CartConfirm::class
     ];
 
 
@@ -59,8 +67,7 @@ class EventTrackingCode extends \Magento\Framework\View\Element\Template
      * @return /SARE/SAREhub/Model/Event/EventInterface
      */
     private function getCodeProvider(){
-        $className = '\SARE\SAREhub\Model\Event\\';
-        $className .= isset($this->_classMapping[$this->getEvent()]) ? $this->_classMapping[$this->getEvent()] : 'Empty';
+        $className = isset($this->_classMapping[$this->getEvent()]) ? $this->_classMapping[$this->getEvent()] : 'Empty';
 
         $objectReflection = new \ReflectionClass($className);
 

@@ -1,9 +1,11 @@
 <?php
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as EventType;;
+
 class CheckoutPage extends Event implements EventInterface
 {
-    public $_id = '_cartregistration';
+    public $_id = EventType::CART_REGISTRATION;
 
     public function getCode(){
         $this->setData('id', 10);

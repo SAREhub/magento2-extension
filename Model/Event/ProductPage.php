@@ -2,9 +2,11 @@
 
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as EventType;;
+
 class ProductPage extends Event implements EventInterface
 {
-    public $_id = '_product';
+    public $_id = EventType::PRODUCT;
 
     public function getCode(){
         $this->setData($this->_id, $this->populateProductPageData());

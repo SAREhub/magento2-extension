@@ -2,6 +2,8 @@
 
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as ParentEvent;
+
 class Event {
 
     const PARAMS_KEY = 'sareX_params.';
@@ -84,7 +86,7 @@ class Event {
         $jsCode = ''.$this->getCodePrefix().' = ';
         $jsCode .= json_encode($this->getData()).';';
 
-        if($this->_id=='_product'){
+        if ($this->_id == ParentEvent::PRODUCT) {
             $jsCode .= $this->getContainedData('_cartadd', 'productDataAdd', '_product').';';
             $jsCode .= $this->getContainedData('_cartdel', 'productDataRemove', '_product').';';
         }
@@ -98,7 +100,6 @@ class Event {
         $newData[$eventId] = $newData[$replacedKey];
         unset($newData[$replacedKey]);
 
-        $jsCode .= json_encode($newData);
-        return $jsCode;
+        return $jsCode . json_encode($newData);
     }
 }

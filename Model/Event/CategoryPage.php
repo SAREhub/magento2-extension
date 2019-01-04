@@ -10,9 +10,11 @@
  */
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as EventType;
+
 class CategoryPage extends Event implements EventInterface
 {
-    public $_id = '_category';
+    public $_id = EventType::CATEGORY;
 
     public function getCode(){
         $this->setData($this->_id, $this->populateCategoryPageData());

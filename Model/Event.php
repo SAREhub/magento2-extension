@@ -12,16 +12,25 @@ namespace SARE\SAREhub\Model;
 
 class Event implements \Magento\Framework\Option\ArrayInterface
 {
+    CONST LOGIN_PAGE = "_loginpage";
+    CONST CATEGORY = "_category";
+    CONST PRODUCT = "_product";
+    CONST CART_ADD = "_cartadd";
+    CONST CART_DEL = "_cartdel";
+    CONST CART_REGISTRATION = "_cartregistration";
+    CONST CART_PURCHASED = "_cartpurchased";
+    CONST CART_CONFIRM = "_cartconfirm";
+    CONST CART_PAYMENT = "_cartpayment";
+
     public static $events = [
-        '_loginpage' => 'Login page visit',
-        '_category'=>'Category page visit',
-        '_product' =>'Product page visit',
-        '_cartadd' => 'Adding product to cart',
-        '_cartdel' => 'Removing product from cart',
-        '_cartregistration' => 'Checkout page visit',
-        '_cartpurchased' => 'Order success page visit',
-//        '_cartpayment' => 'Delivery selection page visit',
-        '_cartconfirm' => 'Page before order is placed',
+        self::LOGIN_PAGE => 'Login page visit',
+        self::CATEGORY => 'Category page visit',
+        self::PRODUCT => 'Product page visit',
+        self::CART_ADD => 'Adding product to cart',
+        self::CART_DEL => 'Removing product from cart',
+        self::CART_REGISTRATION => 'Checkout page visit',
+        self::CART_PURCHASED => 'Order success page visit',
+        self::CART_CONFIRM => 'Page before order is placed',
     ];
 
     /**
@@ -32,7 +41,7 @@ class Event implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         $optionArray = [];
-        foreach(self::$events as $value => $label){
+        foreach(static::$events as $value => $label){
             $optionArray[] = ['value' => $value, 'label' => __($label)];
         }
         return $optionArray;
@@ -46,7 +55,7 @@ class Event implements \Magento\Framework\Option\ArrayInterface
     public function toArray()
     {
         $returnArray = [];
-        foreach(self::$events as $value => $label){
+        foreach(static::$events as $value => $label){
             $returnArray[$value] = __($label);
         }
 

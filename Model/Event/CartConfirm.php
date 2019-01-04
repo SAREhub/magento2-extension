@@ -1,9 +1,11 @@
 <?php
 namespace SARE\SAREhub\Model\Event;
 
+use SARE\SAREhub\Model\Event as EventType;;
+
 class CartConfirm extends Event implements EventInterface
 {
-    public $_id = '_cartconfirm';
+    public $_id = EventType::CART_CONFIRM;
 
     public function getCode(){
         $this->setData("params", $this->getConfirmData());
