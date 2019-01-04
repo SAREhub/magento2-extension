@@ -1,7 +1,7 @@
 <?php
 namespace SARE\SAREhub\Model\Event;
 
-use SARE\SAREhub\Model\Event as EventType;;
+use SARE\SAREhub\Model\Event as EventType;
 
 class CheckoutPage extends Event implements EventInterface
 {

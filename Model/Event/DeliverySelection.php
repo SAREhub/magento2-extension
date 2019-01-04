@@ -2,7 +2,7 @@
 
 namespace SARE\SAREhub\Model\Event;
 
-use SARE\SAREhub\Model\Event as EventType;;
+use SARE\SAREhub\Model\Event as EventType;
 
 class DeliverySelection extends Event implements EventInterface
 {
