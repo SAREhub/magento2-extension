@@ -40,12 +40,11 @@ class EventsStorage
     public function processEvent($sku, $qtyChange){
         $productData = $this->_productHelper->populateProductData($sku);
         $productData['quantity'] = abs($qtyChange);
-        $eventData = [
+
+        return [
             'action' => $qtyChange > 0 ? '_cartAdd' : '_cartDel',
             'qty' => abs($qtyChange),
             'productData' => $productData
         ];
-
-        return $eventData;
     }
 }

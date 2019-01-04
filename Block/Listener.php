@@ -21,9 +21,8 @@ class Listener extends \Magento\Framework\View\Element\Template
     public function getBasicCode()
     {
         $rawCode = $this->scopeConfig->getValue(\SARE\SAREhub\Helper\Config::CONFIG_PATH_BASIC_CODE);
-        $processedCode = $this->processCode($rawCode);
 
-        return $processedCode;
+        return $this->processCode($rawCode);
     }
 
     private function processCode($rawCode)

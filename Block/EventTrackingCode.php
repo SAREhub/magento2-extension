@@ -63,7 +63,8 @@ class EventTrackingCode extends \Magento\Framework\View\Element\Template
         $className .= isset($this->_classMapping[$this->getEvent()]) ? $this->_classMapping[$this->getEvent()] : 'Empty';
 
         $objectReflection = new \ReflectionClass($className);
-        $instance = $objectReflection->newInstanceArgs(
+
+        return $objectReflection->newInstanceArgs(
             [
                 $this->_registry,
                 $this->_scopeConfig,
@@ -72,8 +73,6 @@ class EventTrackingCode extends \Magento\Framework\View\Element\Template
                 $this->_categoryHelper
             ]
         );
-
-        return $instance;
     }
 
 }

@@ -8,8 +8,8 @@ class CartConfirm extends Event implements EventInterface
     public function getCode(){
         $this->setData("params", $this->getConfirmData());
 
-        $script = $this->getEventData();
-        return $script;
+        return $this->getEventData();
+
     }
 
     private function getConfirmData(){
