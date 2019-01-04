@@ -31,7 +31,7 @@ class Product extends \Magento\Framework\App\Helper\AbstractHelper
 
         $product = $this->_productRepository->get($productSku);
 
-        $data = [
+        return [
             'id' => $product->getId(),
             'name' => $product->getName(),
             'price' => $product->getFinalPrice(),
@@ -39,7 +39,5 @@ class Product extends \Magento\Framework\App\Helper\AbstractHelper
             'url' => $this->_storeManager->getStore()->getCurrentUrl(false),
             'category' => $this->_categoryHelper->resolveCategoryNames($product->getCategoryIds())
         ];
-
-        return $data;
     }
 }
